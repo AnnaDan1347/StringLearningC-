@@ -1,0 +1,25 @@
+#include <iostream>
+#include <stdio.h>
+#include <cmath>
+#define Num_of_elements 100.0
+
+using namespace std;
+int main()
+{
+    double n = Num_of_elements;
+    int numOfRequests = 1;
+    double O1, O2, a, b = 0.0;
+    do{
+        a = log (n);
+        b = n * n;
+       O1 =  a * numOfRequests + b;
+       O2 = n * numOfRequests;
+        numOfRequests++;
+    } while (O1>O2);
+    cout << "Change linear search to binary, when number of requests is more than " << numOfRequests << endl;
+    cout << "The number of elements in the array is: " << Num_of_elements << endl;
+	cout << "O binary = " << O1 << endl;
+    cout << "O linear = " << O2 << endl;
+    
+    return 0;
+}
