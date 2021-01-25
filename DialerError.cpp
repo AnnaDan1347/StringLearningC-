@@ -1,6 +1,6 @@
-/*ОШИБКА НАБОРЩИКА. Используя наш алгоритм, 
-устраните ошибку наборщика: удаление 
-повторяющихся слов в тексте.*/
+/*ГЋГГ€ГЃГЉГЂ ГЌГЂГЃГЋГђГ™Г€ГЉГЂ. Г€Г±ГЇГ®Г«ГјГ§ГіГї Г­Г Гё Г Г«ГЈГ®Г°ГЁГІГ¬, 
+ГіГ±ГІГ°Г Г­ГЁГІГҐ Г®ГёГЁГЎГЄГі Г­Г ГЎГ®Г°Г№ГЁГЄГ : ГіГ¤Г Г«ГҐГ­ГЁГҐ 
+ГЇГ®ГўГІГ®Г°ГїГѕГ№ГЁГµГ±Гї Г±Г«Г®Гў Гў ГІГҐГЄГ±ГІГҐ.*/
 
 #include <iostream>
 #include <cstring>
@@ -10,9 +10,8 @@ using namespace std;
 bool isSeparator(char c);
 
 int main() {
-	char text[N], word[N];
+	char text[N], word[N], tempWord[N] = {};
 	int i, iw = 0;
-	char tempWord[N] = {0};
 	cout << "Input text";
 	cin.getline(text, N);
 	for (i = 0; text[i] != '\0'; i++){
@@ -20,27 +19,24 @@ int main() {
 		word[iw] = text[i];
 		iw++;
 			if (isSeparator(text[i+1]) or text[i+1] == '\0') {
-				//word[iw] = '\0';
 				if (strcmp(word, tempWord) != 0) {
-					for ( int w = 0; w < strlen(tempWord); w++){
-						tempWord[i] = 0;	
+					for ( int w = 0; w < iw - 1; w++){
+						tempWord[w] = 0;	
 					}
-					strcpy(tempWord, word);					
+					strcpy(tempWord, word);			
 				} 
 				else {
-					for (int j = i - strlen(word); text[j+strlen(word)+1] != '\0'; j++ ) {
-						cout << text[j - strlen(word)] << "=" << text[j+1] << endl;
-						text[j] = text[j+strlen(word)+1];
-						text[j+strlen(word)+1] =' ';
+					for (int j = i; j < strlen(text); j++ ) {
+						text[j - iw] = text[j+1];
+						text[j+1] = ' ';
 					}
-				}	
+				}				
+				for (int w = 0; w < iw; w++){
+					word[w] = ' ';
+				}
 				iw = 0;
-				for ( int w = 0; w < strlen(word); w++){
-						word[i] = 0;
 			}
-			}
-		}
-		
+		}		
 	}
 	for (i = 0; text[i] != '\0'; i++){
 	cout << text[i];
@@ -56,5 +52,4 @@ bool isSeparator(char c) {
 }
 	return false;
 }
-
 
