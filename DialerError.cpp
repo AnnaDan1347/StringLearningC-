@@ -1,6 +1,6 @@
-/*ГЋГГ€ГЃГЉГЂ ГЌГЂГЃГЋГђГ™Г€ГЉГЂ. Г€Г±ГЇГ®Г«ГјГ§ГіГї Г­Г Гё Г Г«ГЈГ®Г°ГЁГІГ¬, 
-ГіГ±ГІГ°Г Г­ГЁГІГҐ Г®ГёГЁГЎГЄГі Г­Г ГЎГ®Г°Г№ГЁГЄГ : ГіГ¤Г Г«ГҐГ­ГЁГҐ 
-ГЇГ®ГўГІГ®Г°ГїГѕГ№ГЁГµГ±Гї Г±Г«Г®Гў Гў ГІГҐГЄГ±ГІГҐ.*/
+/*ОШИБКА НАБОРЩИКА. Используя наш алгоритм, 
+устраните ошибку наборщика: удаление 
+повторяющихся слов в тексте.*/
 
 #include <iostream>
 #include <cstring>
@@ -14,13 +14,14 @@ int main() {
 	int i, iw = 0;
 	cout << "Input text";
 	cin.getline(text, N);
+	
 	for (i = 0; text[i] != '\0'; i++){
 		if (!isSeparator(text[i])){
 		word[iw] = text[i];
 		iw++;
 			if (isSeparator(text[i+1]) or text[i+1] == '\0') {
-				if (strcmp(word, tempWord) != 0) {
-					for ( int w = 0; w < iw - 1; w++){
+				if (!strcmp(word, tempWord)) {
+					for (int w = 0; w < iw - 1; w++){
 						tempWord[w] = 0;	
 					}
 					strcpy(tempWord, word);			
@@ -52,4 +53,5 @@ bool isSeparator(char c) {
 }
 	return false;
 }
+
 
